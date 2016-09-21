@@ -40,13 +40,13 @@ error_val = zeros(length(lambda_vec), 1);
 %
 
 
-
-
-
-
-
-
-
+for i = 1:length(lambda_vec)
+	lambda = lambda_vec(i);
+	[theta_train] = trainLinearReg(X,y, lambda);
+	% You wont use the lambda for calculation of Jtrain and Jcv (Its not in the formula)
+	[error_train(i),grad] = linearRegCostFunction(X,y,theta_train,0);
+	[error_val(i),grad] = linearRegCostFunction(Xval,yval,theta_train,0);
+end;
 
 % =========================================================================
 
