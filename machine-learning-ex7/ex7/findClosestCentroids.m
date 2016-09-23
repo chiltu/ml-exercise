@@ -21,11 +21,23 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+for i = 1: size(X,1)
+	% using for loop.
+	% minvalue = inf;
+	% for j = 1: K
+	% 	value = (X(i,:) - centroids(j,:)) .^ 2;
+	% 	if (sum(value) < minvalue)
+	% 		minvalue = sum(value);
+	% 		idx(i) = j;
+	% 	end;
+	% end;
 
-
-
-
-
+	% Using matrix
+	nx = repmat(X(i,:),K,1);
+	size(centroids);
+	[value,min_idx] = min(sum((nx .- centroids) .^ 2,2));
+	idx(i) = min_idx;
+end;
 
 % =============================================================
 
